@@ -78,16 +78,20 @@ namespace CompareUI
             //      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             //});
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "area",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapAreaRoute(
+                // 1
+                endpoints.MapControllerRoute(
+                    name: "area",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                // 2
+                endpoints.MapAreaControllerRoute(
                     name: "default",
-                    areaName: "Website",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    areaName: "Main",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }
