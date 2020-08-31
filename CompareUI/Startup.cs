@@ -77,10 +77,6 @@ namespace CompareUI
                   name: "default",
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapAreaControllerRoute(
-                    name: "Main",
-                    areaName: "Main",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }
