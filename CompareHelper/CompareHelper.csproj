@@ -12,5 +12,11 @@
     <Reference Include="ApiHandshake">
       <HintPath>ApiHandshake.dll</HintPath>
     </Reference>
+    <Reference Include="Compare.Common">
+      <HintPath>Compare.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Compare.Data">
+      <HintPath>Compare.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
