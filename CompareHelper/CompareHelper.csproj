@@ -9,9 +9,6 @@
     <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.11.4" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="RequestObjects\" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="ApiHandshake">
       <HintPath>ApiHandshake.dll</HintPath>
     </Reference>
