@@ -23,7 +23,6 @@ namespace CompareHelper.Request
         {
             internal const string GET_QUOTES = "/CompareService/GetQuotes";
             internal const string MAKE_REQUESTS = "/CompareService/MakeRequest";
-
         }
         internal class AdminEndpoints
         {
