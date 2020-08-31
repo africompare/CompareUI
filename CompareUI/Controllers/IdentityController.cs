@@ -18,7 +18,6 @@ namespace AfriCompareAdmin.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Login()
         {
             return View();
