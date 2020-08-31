@@ -6,6 +6,7 @@ namespace CompareHelper.Request
 {
     class EndPoints
     {
+
         internal class SharedEndpoints
         {
             public const string SignIn = "/CompareService/Login";
