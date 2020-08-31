@@ -72,6 +72,15 @@ namespace CompareUI
                 endpoints.MapControllerRoute(
                     name: "areas",
                     pattern: "{area=user}/{controller=Home}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                  name: "default",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "Main",
+                    areaName: "Main",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }
