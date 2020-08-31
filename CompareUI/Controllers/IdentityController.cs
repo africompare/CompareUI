@@ -22,7 +22,7 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-
+         
         public ActionResult Registration()
         {
             return View();
