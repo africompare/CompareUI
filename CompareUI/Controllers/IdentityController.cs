@@ -23,12 +23,16 @@ namespace AfriCompareAdmin.Controllers
             return View();
         }
          
-        public ActionResult Registration()
+        public ActionResult SignUp()
         {
             return View();
         }
-
-        public JsonResult ProcessRegistration()
+        // GET: Register
+        public ActionResult BlankPage()
+        {
+            return View();
+        }
+        public JsonResult ProcessRegistration(AfriCompare.API.Controllers.UserRegistrationRequest model)
         {
             return   Json(new {  IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Email is required" });
         }

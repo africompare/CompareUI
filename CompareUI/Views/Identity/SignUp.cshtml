@@ -1,0 +1,127 @@
+﻿@model AfriCompare.API.Controllers.UserRegistrationRequest
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="block-center mt-4 wd-xl">
+    <!-- START card-->
+    <div class="card card-flat">
+        <div class="card-header text-center bg-dark"><a href="#"><img class="block-center" src="img/logo.png" alt="Image"></a></div>
+        <div class="card-body">
+            <p class="text-center py-2">SIGNUP TO GET INSTANT ACCESS.</p>
+            @*<form class="mb-3" id="registerForm" novalidate>*@
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", data_parsley_validate = "" }))
+            {<div class="form-group">
+                    <label class="text-muted" for="signupInputEmail1">Email address</label>
+                    <div class="input-group with-focus">
+                        <input class="form-control border-right-0" id="signupInputEmail1" type="email" placeholder="Enter email" autocomplete="off" required>
+                        <div class="input-group-append"><span class="input-group-text text-muted bg-transparent border-left-0"><em class="fa fa-envelope"></em></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-muted" for="signupInputPassword1">Password</label>
+                    <div class="input-group with-focus">
+                        <input class="form-control border-right-0" id="signupInputPassword1" type="password" placeholder="Password" autocomplete="off" required>
+                        <div class="input-group-append"><span class="input-group-text text-muted bg-transparent border-left-0"><em class="fa fa-lock"></em></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-muted" for="signupInputRePassword1">Retype Password</label>
+                    <div class="input-group with-focus">
+                        <input class="form-control border-right-0" id="signupInputRePassword1" type="password" placeholder="Retype Password" autocomplete="off" required data-parsley-equalto="#signupInputPassword1">
+                        <div class="input-group-append"><span class="input-group-text text-muted bg-transparent border-left-0"><em class="fa fa-lock"></em></span></div>
+                    </div>
+                </div>
+                <div class="checkbox c-checkbox mt-0"><label><input type="checkbox" value="" required name="agreed"><span class="fa fa-check"></span> I agree with the<a class="ml-1" href="#">terms</a></label></div><button class="btn btn-block btn-primary mt-3" type="submit">Create account</button>
+                @*</form>*@
+            }
+            <p class="pt-3 text-center">Have an account?</p><a class="btn btn-block btn-secondary" href="login.html">Signin</a>
+        </div>
+    </div><!-- END card-->
+    <div class="p-3 text-center"><span class="mr-2">&copy;</span><span>2020</span><span class="mr-2">-</span><span>Angle</span><br><span>Bootstrap Admin Template</span></div>
+</div>
+
+@section Scripts {
+    @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+    @{Html.RenderPartial("ValidationScriptsPartial");}
+} 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            $('#frm').parsley().on('field:validated', function() {
+            var ok = $('.parsley-error').length === 0;
+            $('.bs-callout-info').toggleClass('hidden', !ok);
+                $('.bs-callout-warning').toggleClass('hidden', ok);
+            }).on('form:submit', function () {
+                ClearInlineError("dvError");
+                var frm = $("#frm");
+                if (frm == null) {
+                    InlineErrorMessage("Invalid Tab Information", "dvError");
+                    return false;
+                }
+
+                if (!frm.valid()) {
+                    InlineErrorMessage("Validation Error! Please check all fields", "dvError");
+                    return false;
+                }
+
+                var form = document.querySelector('form');
+                var formData = new FormData(form);
+
+                //var actionUrl = frm.attr("action");
+                var params = frm.serializeArray();
+
+                $("#waitAdd").show();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ProcessRegistration", "Identity")',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (!data.IsAuthenticated) {
+                            window.location.href = "@Url.Action("Login", "Portal")";
+                            return;
+                        }
+                        if (!data.IsSuccessful) {
+                            InlineErrorMessage(data.Error ? data.Error : "Unknown error occured. Please try again later!", "dvError");
+                            swal({
+                                title: "",
+                                text: data.Error ? data.Error : "Unknown error occured. Please try again later!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonText: "Close",
+                                closeOnConfirm: true,
+                            }, function (isConfirm) {
+                                if (isConfirm) {
+                                }
+                            });
+
+                        } else {
+                            $('#dvModal').modal('hide');
+                            swal({
+                                title: "",
+                                text: "Training Information was added successfully",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: false,
+                            }, function (isConfirm) {
+                                if (isConfirm) {
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    },
+                    complete: function () {
+                        $("#waitAdd").hide();
+                    }
+                });
+
+            return false; // Don't submit form for this demo
+          });
+        });
+    
+</script>
