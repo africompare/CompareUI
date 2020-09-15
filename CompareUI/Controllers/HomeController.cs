@@ -40,12 +40,6 @@ namespace AfriCompareAdmin.Controllers
 
             return View();
         }
-        public ActionResult HomeLanding()
-        {
-            ViewBag.Message = "YGet quote requirement.";
-
-            return View();
-        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
