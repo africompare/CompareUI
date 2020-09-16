@@ -1,4 +1,12 @@
-﻿@{
-    //Layout = "~/Views/Shared/_Layout.cshtml";
-    Layout = "~/Views/Shared/AccLayout.cshtml";
+﻿@{ 
+    string vLayout = ""; 
+    if (ViewContext.RouteData.Values["Controller"].ToString() == "Home")
+    {
+        vLayout = "~/Views/Shared/AccLayout.cshtml";
+    }
+    else
+    {
+        vLayout = "~/Views/Shared/_Layout.cshtml";
+    }
+    Layout = vLayout;
 }
