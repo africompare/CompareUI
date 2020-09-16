@@ -22,22 +22,14 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
+        
+        public IActionResult Quotes()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
-            return View();
-        }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

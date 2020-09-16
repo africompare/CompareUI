@@ -1,0 +1,20 @@
+.rightsidebg{
+	background-color: rgba(225,116,21,1.00);
+	
+}
+
+.formtext{
+	padding:20px 10px;
+}
+
+.quoteicon{
+	border:2px solid rgba(58,207,84,1.00);
+	border-radius: 50%;
+	padding: 15px 10px;
+}
+.quoteicond{
+	border:2px solid rgba(142,142,142,1.00);
+	border-radius: 50%;
+	padding: 15px 10px;
+	opacity: .4;
+}
