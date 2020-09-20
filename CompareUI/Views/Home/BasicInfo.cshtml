@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewData["Title"] = "BasicInfo";
+    Layout = "~/Views/Shared/AccLayout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Home Home Page";
+    Layout = "~/Views/Shared/AccLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl-5">
+        <div class="card card-default mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Type</label>
+                            <div class="col-md-10 form-group">
+                                <select class="custom-select custom-select-sm" style="height: 43px;">
+                                    <option selected="">Insurance Type</option>
+                                    <option value="1">Car</option>
+                                    <option value="2">Health</option>
+                                    <option value="3">Business</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-xl-2 col-form-label">Vehicle Plate</label>
+                            <div class="col-xl-10">
+                                <input class="form-control formtext" type="email" placeholder="KUB 292 XL">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Vehicle Type</label>
+                            <div class="col-md-10 form-group">
+                                <select class="custom-select custom-select-sm" style="height: 43px;">
+                                    <option selected="">Select Vehicle Type</option>
+                                    <option value="1">4-Door Sedan</option>
+                                    <option value="2">2-Door Coupe</option>
+                                    <option value="3">Station Wagons</option>
+                                    <option value="3">Convertible</option>
+                                    <option value="3">Sports Car</option>
+                                    <option value="3">Mini-Van</option>
+                                    <option value="3">SUV</option>
+                                    <option value="3">Pickup Truck</option>
+                                    <option value="3">Van</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Insurance Cover</label>
+                            <div class="col-md-10 form-group">
+                                <select class="custom-select custom-select-sm" style="height: 43px;">
+                                    <option selected="">Select Cover Type</option>
+                                    <option value="1">Third Party</option>
+                                    <option value="2">Comprehensive</option>
+                                    <option value="3">Comprehensive 2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-xl-2 col-form-label">Car Value</label>
+                            <div class="col-xl-10">
+                                <input class="form-control formtext" type="text" placeholder="N1,900,000">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-xl-2 col-form-label">Policy Holder</label>
+                            <div class="col-xl-10">
+                                <input class="form-control formtext" type="text" placeholder="Ayo Musa Chike">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-xl-2 col-form-label">Email</label>
+                            <div class="col-xl-10">
+                                <input class="form-control formtext" type="email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-xl-2 col-form-label">Phone #</label>
+                            <div class="col-xl-10">
+                                <input class="form-control formtext" type="tel" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Select</label>
+                            <div class="col-md-10 form-group">
+                                <select class="custom-select custom-select-sm" style="height: 43px;">
+                                    <option selected="">Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="mb-1 btn btn-green btn-block" type="button">Get Quotes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 ">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-header">Application Information</div>
+            <div class="card-body">
+                <h5 class="card-title">Form Details</h5>
+                <p class="card-text">This is where we put the details and tips for AfriCompare Users</p>
+                <hr />
+                <p>We can also have them in segments</p>
+            </div>
+        </div>
+    </div>
+</div>

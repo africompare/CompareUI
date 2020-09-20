@@ -28,6 +28,11 @@ namespace AfriCompareAdmin.Controllers
             return View();
         }
 
+        public IActionResult BasicInfo()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
