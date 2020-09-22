@@ -18,3 +18,11 @@
 	padding: 15px 10px;
 	opacity: .4;
 }
+
+
+
+@media screen and (max-width:767px) {
+	.baseImg {
+		display: none;
+	}
+}
