@@ -33,6 +33,11 @@ namespace AfriCompareAdmin.Controllers
             return View();
         }
 
+        public IActionResult VendorInfo()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
