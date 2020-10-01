@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
+using AfriCompare.API.Controllers;
+using Microsoft.AspNetCore.Http;
 
 namespace AfriCompareAdmin.Controllers
 {
@@ -32,7 +34,66 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
+        public JsonResult ProcessAddBasicInfo(UserRegistrationRequest model)
+        {
+            try
+            {
+                //var userData = MvcApplication.GetUserData(User.Identity.Name) ?? new UserData();  if (userData.UserId < 1) { return Json(new { IsSuccessful = false, Error = "Your session has expired", IsAuthenticated = false }); }
+                //if (model == null)
+                //{
+                //    return Json(new { IsSuccessful = false, Error = "Your session has expired", IsAuthenticated = false });
+                //}
 
+                if (string.IsNullOrEmpty(model.FullName) || model.FullName.Length < 2)
+                {
+                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid FullName" });
+                }
+
+                if (string.IsNullOrEmpty(model.City) || model.City.Length < 2)
+                {
+                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid City" });
+                }
+
+                if (string.IsNullOrEmpty(model.PhoneNumber) || model.PhoneNumber.Length < 2)
+                {
+                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid PhoneNumber" });
+                }
+
+                if (string.IsNullOrEmpty(model.Salutation) || model.Salutation.Length < 2)
+                {
+                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid Salutation" });
+                }
+
+                //model.AdminUserId = userData.UserId;
+                //model.Status = model.StatusVal ? 1 : 0;
+
+                //if (Session["_AssignmentList_"] is List<AssignmentObj> previousAssignmentList)
+                //{
+                //    if (previousAssignmentList.Count(x => x.Name.ToLower().Trim().ToStandardHash() == model.Name.ToLower().Trim().ToStandardHash()) > 0)
+                //        return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Assignment Information  Already Exist!" });
+                //}
+
+                //var response = AssignmentService.AddAssignment(model, userData.Username);
+                //if (response?.Status == null)
+                //{
+                //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Error Occurred! Please try again later" });
+                //}
+
+                //if (!response.Status.IsSuccessful)
+                //{
+                //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = string.IsNullOrEmpty(response.Status.Message.TechnicalMessage) ? "Process Failed! Unable to add nomination Source" : response.Status.Message.TechnicalMessage });
+                //}
+
+                //HttpContext.Session.SetString("_AssignmentList", null);
+                return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" });
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(LogLevel.Debug, $"{ex.StackTrace} ==> {ex.Source}  ==> {ex.Message}");
+                return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Process Error Occurred! Please try again later" });
+            }
+        }
+        
         public IActionResult Privacy()
         {
             return View();
