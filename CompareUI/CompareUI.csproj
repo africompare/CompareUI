@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Data\**" />
+    <Content Remove="Controllers\Data\**" />
+    <EmbeddedResource Remove="Controllers\Data\**" />
+    <None Remove="Controllers\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CompareHelper\CompareHelper.csproj" />
   </ItemGroup>
 

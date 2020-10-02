@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
-using AfriCompare.API.Controllers;
-using Microsoft.AspNetCore.Http;
 
 namespace AfriCompareAdmin.Controllers
 {
@@ -34,7 +32,7 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-        public JsonResult ProcessAddBasicInfo(UserRegistrationRequest model)
+        public JsonResult ProcessAddBasicInfo(AfriCompare.API.Controllers.UserRegistrationRequest model)
         {
             try
             {
@@ -93,7 +91,7 @@ namespace AfriCompareAdmin.Controllers
                 return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Process Error Occurred! Please try again later" });
             }
         }
-        
+
         public IActionResult Privacy()
         {
             return View();

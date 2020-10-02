@@ -25,71 +25,74 @@
                         <label>Phone Number</label>
                         <input class="form-control formtext" type="tel" placeholder="Phone Number">
                     </div-->
-                    <div class="p-2">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label asp-for="Salutation" class="control-label"></label>
-                                <input asp-for="Salutation" type="text" name="Salutation" class="form-control formtext" placeholder="Salutation" />
-                                <span asp-validation-for="Salutation" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-8">
-                                <label asp-for="FullName" class="control-label"></label>
-                                <input asp-for="FullName" type="text" name="FullName" class="form-control formtext" placeholder="FullName " />
-                                <span asp-validation-for="FullName" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-2">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" type="email" name="Email" class="form-control formtext" placeholder="Email" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-
-                    <div class="p-2">
-                        <label asp-for="PhoneNumber" class="control-label"></label>
-                        <input asp-for="PhoneNumber" type="text" name="PhoneNumber" class="form-control formtext" placeholder="Phone Number" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-
-                    <div class="p-2">
-                        <label asp-for="City" class="control-label"></label>
-                        <input asp-for="City" type="text" name="City" class="form-control formtext" placeholder="City" />
-                        <span asp-validation-for="City" class="text-danger"></span>
-                    </div>
-                    <div class="d-flex p-2 ">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", data_parsley_validate = "" }))
+                    {
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="p-2">
-                            <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" type="password" name="password" class="form-control formtext" placeholder="Password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label asp-for="Salutation" class="control-label"></label>
+                                    <input asp-for="Salutation" type="text" name="Salutation" class="form-control formtext" placeholder="Salutation" />
+                                    <span asp-validation-for="Salutation" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-8">
+                                    <label asp-for="FullName" class="control-label"></label>
+                                    <input asp-for="FullName" type="text" name="FullName" class="form-control formtext" placeholder="FullName " />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-2">
-                            <label asp-for="ConfirmPassword" class="control-label"></label>
-                            <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" />
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        </div>
-                    </div>
 
-                    <!--div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div-->
-                    <div class="p-2">
-                        <input type="submit" value="Next" class="btn btn-block btn-success" />
-                        <!--a href="#" class=" btn btn-block btn-success">Next</a-->
-                    </div>
+                        <div class="p-2">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" type="email" name="Email" class="form-control formtext" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="p-2">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" type="text" name="PhoneNumber" class="form-control formtext" placeholder="Phone Number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="p-2">
+                            <label asp-for="City" class="control-label"></label>
+                            <input asp-for="City" type="text" name="City" class="form-control formtext" placeholder="City" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex p-2 ">
+                            <div class="p-2">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" type="password" name="password" class="form-control formtext" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="p-2">
+                                <label asp-for="ConfirmPassword" class="control-label"></label>
+                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!--div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div-->
+                        <div class="p-2">
+                            <input type="submit" value="Next" class="btn btn-block btn-success" />
+                            <!--a href="#" class=" btn btn-block btn-success">Next</a-->
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> 
 
-<script src="~/Content/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-
+@section Scripts { 
 <script>
     $(document).ready(function () {
-        loadFees();
-
-        $('#frmAdd').parsley().on('field:validated', function() {
+        //loadFees();
+        $('#frmAdd').parsley().on('field:validated', function () {
+            alert("pre submit alert");
             var ok = $('.parsley-error').length === 0;
             if (!ok) {
                 InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
@@ -105,7 +108,6 @@
                 InlineErrorMessage("Invalid Tab Information", "dvError");
                 return false;
             }
-
 
             if (!frm.valid()) {
                 InlineErrorMessage("Validation Error! Please check all fields", "dvError");
@@ -144,7 +146,7 @@
                         $('#dvModal').modal('hide');
                         swal({
                             title: "",
-                            text: "Course Information was added successfully",
+                            text: "User Information was added successfully",
                             type: "success",
                             showCancelButton: false,
                             confirmButtonText: "Ok",
@@ -164,10 +166,10 @@
         });
     });
 
-</script>
+        </script>
 
-<script>
-        function loadFees() {
+        <script>
+        @*function loadFees() {
         //$("#FeeId").prop("disabled", true);
         $.getJSON("@Url.Action("LoadFees", "OBusinessDataProvider")",
             function(data) {
@@ -183,5 +185,6 @@
                 $("#FeeId").html(items);
                 //$("#FeeId").prop("disabled", false);
             });
+    }*@
+        </script>
     }
-</script>
