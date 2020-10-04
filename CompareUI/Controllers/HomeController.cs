@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Linq;
-using ApiHandshake;
-using CompareUI.Models;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using CompareHelper.Endpoints;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using AfriCompare.API.Controllers;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
- 
+using CompareUI.Models;
+
 namespace AfriCompareAdmin.Controllers
 {
     public class HomeController : Controller
@@ -35,7 +32,7 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-        public JsonResult ProcessAddBasicInfo(UserRegistrationRequest model)
+        public JsonResult ProcessAddBasicInfo(AfriCompare.API.Controllers.UserRegistrationRequest model)
         {
             try
             {
@@ -66,8 +63,7 @@ namespace AfriCompareAdmin.Controllers
                 }
 
                 //model.AdminUserId = userData.UserId;
-
-                //model.Status = model.StatusVal ? 1 : 0; 
+                //model.Status = model.StatusVal ? 1 : 0;
 
                 //if (Session["_AssignmentList_"] is List<AssignmentObj> previousAssignmentList)
                 //{
@@ -81,12 +77,10 @@ namespace AfriCompareAdmin.Controllers
                 //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Error Occurred! Please try again later" });
                 //}
 
-                var response = WebAPI<UserRegistrationRequest, UserRegistrationRequest>.Consume(SharedEndpoints.Register, model, "a_ntukidem@yahoo.com");
-
-                if (!response.IsSuccess)
-                {
-                    return Json(new { IsAuthenticated = false, IsSuccessful = false, IsReload = false, Error = string.IsNullOrEmpty(response.DebugMessage) });
-                }
+                //if (!response.Status.IsSuccessful)
+                //{
+                //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = string.IsNullOrEmpty(response.Status.Message.TechnicalMessage) ? "Process Failed! Unable to add nomination Source" : response.Status.Message.TechnicalMessage });
+                //}
 
                 //HttpContext.Session.SetString("_AssignmentList", null);
                 return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" });
@@ -97,6 +91,7 @@ namespace AfriCompareAdmin.Controllers
                 return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Process Error Occurred! Please try again later" });
             }
         }
+
         public IActionResult VendorInfo()
         {
             return View();
@@ -106,7 +101,6 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

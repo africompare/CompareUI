@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CompareHelper.Endpoints
+namespace CompareHelper.Request
 {
-        public static class SharedEndpoints
+    class EndPoints
+    {
+
+        internal class SharedEndpoints
         {
-            public const string SignIn = "CompareService/Login";
-            public const string Register = "compareservice/register";// "/compareservice​/register";
-            public const string ResetPassword = "CompareService/PasswordReset";
+            public const string SignIn = "/CompareService/Login";
+            public const string Register = "​/CompareService​/Register";
+            public const string ResetPassword = "/CompareService/PasswordReset";
         }
         internal class VendorEndpoints
         {
@@ -26,4 +29,5 @@ namespace CompareHelper.Endpoints
         {
             internal const string ADD_PRODUCT_ENDPOINT = "/CompareService/LoadTransactions";  
         }
+    }
 }

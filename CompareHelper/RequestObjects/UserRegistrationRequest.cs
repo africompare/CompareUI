@@ -10,22 +10,20 @@ namespace AfriCompare.API.Controllers
 
         [Required] 
         public string Password { get; set; }
-
-        [Required]
+        [Required] 
         public string ConfirmPassword { get; set; }
-
         [Required]
         public string PhoneNumber { get; set; }
         [Required]
         public string Salutation { get; set; }
         [Required]
         public string FullName { get; set; }
-        //[Required]
-        //public string Gender { get; set; }
-        //[Required]
-        //public string DateOfBirth { get; set; }
+        [Required]
+        public string Gender { get; set; }
+        [Required]
+        public string DateOfBirth { get; set; }
         [Required]
         public string City { get; set; } 
-        //public  string ConfirmUrl { get; set; }
+        public  string ConfirmUrl { get; set; }
     }
 }
