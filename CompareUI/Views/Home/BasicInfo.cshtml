@@ -25,7 +25,8 @@
                         <label>Phone Number</label>
                         <input class="form-control formtext" type="tel" placeholder="Phone Number">
                     </div-->
-                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", data_parsley_validate = "" }))
+                    @*@using (Html.BeginForm("ProcessAddBasicInfo", "Home", FormMethod.Post))*@
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
                     {
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="p-2">
@@ -63,18 +64,17 @@
                         <div class="d-flex p-2 ">
                             <div class="p-2">
                                 <label asp-for="Password" class="control-label"></label>
-                                <input asp-for="Password" type="password" name="password" class="form-control formtext" placeholder="Password" />
+                                <input asp-for="Password" type="password" name="password" class="form-control formtext" placeholder="Password" required />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="p-2">
                                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" />
+                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" required data-parsley-equalto="#Password" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
-
                         <!--div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Create" class="btn btn-primary" />
                         </div-->
                         <div class="p-2">
                             <input type="submit" value="Next" class="btn btn-block btn-success" />
@@ -85,42 +85,42 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
-@section Scripts { 
-<script>
+@section Scripts {
+    <script>
     $(document).ready(function () {
         //loadFees();
+
         $('#frmAdd').parsley().on('field:validated', function () {
             alert("pre submit alert");
             var ok = $('.parsley-error').length === 0;
             if (!ok) {
-                InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
+                //InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
                 return false;
             }
         }).on('form:submit', function () {
-            ClearInlineError("dvError");
-
+           // ClearInlineError("dvError");
 
             var frm = $("#frmAdd");
 
             if (frm == null) {
-                InlineErrorMessage("Invalid Tab Information", "dvError");
+                //InlineErrorMessage("Invalid Tab Information", "dvError");
                 return false;
             }
 
             if (!frm.valid()) {
-                InlineErrorMessage("Validation Error! Please check all fields", "dvError");
+                //InlineErrorMessage("Validation Error! Please check all fields", "dvError");
                 return false;
             }
 
             //var actionUrl = frm.attr("action");
             var params = frm.serializeArray();
 
-            $("#waitAdd").show();
+            //$("#waitAdd").show();
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("ProcessAddBasicInfo", "HomeController")',
+                url: '@Url.Action("ProcessAddBasicInfo", "Home")',
                 data: params,
                 success: function (data) {
                     if (!data.IsAuthenticated) {
@@ -128,7 +128,7 @@
                         return;
                     }
                     if (!data.IsSuccessful) {
-                        InlineErrorMessage(data.Error ? data.Error : "Unknown error occured. Please try again later!", "dvError");
+                        //InlineErrorMessage(data.Error ? data.Error : "Unknown error occured. Please try again later!", "dvError");
                        swal({
                             title: "",
                             text: data.Error ? data.Error : "Unknown error occured. Please try again later!",
@@ -138,10 +138,8 @@
                             closeOnConfirm: true,
                         }, function (isConfirm) {
                             if (isConfirm) {
-
                             }
                         });
-
                     } else {
                         $('#dvModal').modal('hide');
                         swal({
@@ -165,10 +163,9 @@
             return false;
         });
     });
+    </script>
 
-        </script>
-
-        <script>
+    <script>
         @*function loadFees() {
         //$("#FeeId").prop("disabled", true);
         $.getJSON("@Url.Action("LoadFees", "OBusinessDataProvider")",
@@ -186,5 +183,5 @@
                 //$("#FeeId").prop("disabled", false);
             });
     }*@
-        </script>
-    }
+    </script>
+}
