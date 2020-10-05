@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "BasicInfo";
     Layout = "~/Views/Shared/AccLayout.cshtml";
-    string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
+    string pattern = @"(?=.*[a-z])(?=.*[A-Z]).*";
 }
 <div class="container">
     <div class="baseImg" style="position: fixed;padding-left: 40px;">
@@ -55,13 +55,12 @@
                             <div class="p-2">
                                 <label asp-for="Password" class="control-label"></label>
                                 <input asp-for="Password" type="password" name="password" class="form-control formtext" 
-                                    data-parsley-minlength="8"
                                     data-parsley-required-message="Please enter your  password."
                                     data-parsley-uppercase="1"
                                     data-parsley-lowercase="1"
                                     data-parsley-number="1"
                                     data-parsley-special="1"
-                                    data-parsley-required 
+                                    data-parsley-pattern="@pattern" 
                                     required
                                     minlength="6" 
                                     data-parsley-trigger="change focusin" 

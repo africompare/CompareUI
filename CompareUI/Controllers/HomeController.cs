@@ -9,6 +9,8 @@ using CompareUI.Models;
 using ApiHandshake;
 using AfriCompare.API.Controllers;
 using CompareHelper.Request;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace AfriCompareAdmin.Controllers
 {
@@ -79,8 +81,11 @@ namespace AfriCompareAdmin.Controllers
                 //{
                 //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Error Occurred! Please try again later" });
                 //}
-                
-                var response = WebAPI<ItemResponseObj<UserRegistrationRequest>,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
+
+                string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
+                 model.ConfirmationLink   = System.Net.WebUtility.UrlDecode(confirmLink);
+ 
+                 var response = WebAPI<ItemResponseObj<UserRegistrationRequest>,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
 
                 if (!response.IsSuccess  )
                 {
