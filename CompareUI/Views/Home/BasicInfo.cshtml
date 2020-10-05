@@ -1,5 +1,4 @@
-﻿@model AfriCompare.API.Controllers.UserRegistrationRequest
-
+﻿@model AfriCompare.API.Controllers.UserRegistrationRequest 
 @{
     ViewData["Title"] = "BasicInfo";
     Layout = "~/Views/Shared/AccLayout.cshtml";
@@ -9,38 +8,12 @@
         <img src="~/Content/img/formpic.png" alt="" width="400" />
     </div>
     <div class="row justify-content-end">
-        <div class="col-md-5">
-
-
-
-            @* Charles Parsley Validated Form *@
-            <form method="post" action="#" data-parsley-validate="" novalidate="">
-                <div class="card card-default">
-                    <div class="card-header">
-                        <div class="card-title">Form Register</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group"><label class="col-form-label">Email Address *</label><input class="form-control" type="text" name="email" required></div>
-                        <div class="form-group"><label class="col-form-label">Password *</label><input class="form-control" id="id-password" type="password" name="password" required></div>
-                        <div class="form-group"><label class="col-form-label">Confirm Password *</label><input class="form-control" type="password" name="confirmPassword" required data-parsley-equalto="#id-password"></div>
-                        <div class="required">* Required fields</div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <div class="checkbox c-checkbox"><label><input type="checkbox" name="agreements" required data-parsley-error-message="Please read and agree the terms"><span class="fa fa-check"></span> I agree with the<a class="ml-2" href="#">terms</a></label></div>
-                            </div>
-                            <div class="float-right"><button class="btn btn-primary" type="submit">Register</button></div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
+        <div class="col-md-5">  
 
             <div class="card card-default mb-3 mt-3">
                 <div class="card-body">
                     <div class="card-header">Get Started</div>
-                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", data_parsley_validate = "" }))
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
                     {
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="p-2">
@@ -75,6 +48,7 @@
                             <input asp-for="City" type="text" name="City" class="form-control formtext" placeholder="City" />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
+
                         <div class="d-flex p-2 ">
                             <div class="p-2">
                                 <label asp-for="Password" class="control-label"></label>
@@ -89,8 +63,9 @@
                         </div>
 
                         <!--div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div-->
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        </div-->
+
                         <div class="p-2">
                             <input type="submit" value="Next" class="btn btn-block btn-success" />
                             <!--a href="#" class=" btn btn-block btn-success">Next</a-->
@@ -107,15 +82,15 @@
     $(document).ready(function () {
         //loadFees();
         $('#frmAdd').parsley().on('field:validated', function () {
-            alert("pre submit alert");
-            var ok = $('.parsley-error').length === 0;
-            if (!ok) {
+             var ok = $('.parsley-error').length === 0;
+            alert(ok);
+           if (!ok) {
                 InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
                 return false;
             }
         }).on('form:submit', function () {
-            ClearInlineError("dvError");
 
+            ClearInlineError("dvError"); 
 
             var frm = $("#frmAdd");
 
@@ -131,11 +106,12 @@
 
             //var actionUrl = frm.attr("action");
             var params = frm.serializeArray();
+            alert("submiting");
 
-            $("#waitAdd").show();
+            //$("#waitAdd").show();
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("ProcessAddBasicInfo", "HomeController")',
+                url: '@Url.Action("ProcessAddBasicInfo", "Home")',
                 data: params,
                 success: function (data) {
                     if (!data.IsAuthenticated) {
@@ -153,7 +129,6 @@
                             closeOnConfirm: true,
                         }, function (isConfirm) {
                             if (isConfirm) {
-
                             }
                         });
 
@@ -174,16 +149,15 @@
                     }
                 },
                 complete: function () {
-                    $("#waitAdd").hide();
+                    //$("#waitAdd").hide();
                 }
             });
             return false;
         });
-    });
+    }); 
+</script>
 
-        </script>
-
-        <script>
+<script>
         @*function loadFees() {
         //$("#FeeId").prop("disabled", true);
         $.getJSON("@Url.Action("LoadFees", "OBusinessDataProvider")",
