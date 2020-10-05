@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiHandshake\ApiHandshake.csproj" />
     <ProjectReference Include="..\CompareHelper\CompareHelper.csproj" />
   </ItemGroup>
 

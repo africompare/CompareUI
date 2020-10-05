@@ -17,13 +17,8 @@ namespace AfriCompare.API.Controllers
         [Required]
         public string Salutation { get; set; }
         [Required]
-        public string FullName { get; set; }
-        [Required]
-        public string Gender { get; set; }
-        [Required]
-        public string DateOfBirth { get; set; }
+        public string FullName { get; set; }  
         [Required]
         public string City { get; set; } 
-        public  string ConfirmUrl { get; set; }
     }
 }

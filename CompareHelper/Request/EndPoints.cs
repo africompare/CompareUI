@@ -4,13 +4,10 @@ using System.Text;
 
 namespace CompareHelper.Request
 {
-    class EndPoints
-    {
-
-        internal class SharedEndpoints
+        public static  class SharedEndpoints
         {
             public const string SignIn = "/CompareService/Login";
-            public const string Register = "​/CompareService​/Register";
+            public const string Register = "/compareservice/register";
             public const string ResetPassword = "/CompareService/PasswordReset";
         }
         internal class VendorEndpoints
@@ -29,5 +26,4 @@ namespace CompareHelper.Request
         {
             internal const string ADD_PRODUCT_ENDPOINT = "/CompareService/LoadTransactions";  
         }
-    }
 }
