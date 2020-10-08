@@ -85,9 +85,10 @@ namespace AfriCompareAdmin.Controllers
                 string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
                  model.ConfirmationLink   = System.Net.WebUtility.UrlDecode(confirmLink);
  
-                 var response = WebAPI<ItemResponseObj<UserRegistrationRequest>,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
+                 var response = WebAPI< AuthenticationResult ,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
 
-                if (!response.IsSuccess  )
+                
+                if (!response.IsSuccessful)
                 {
                     return Json(new {   IsSuccessful = false, IsReload = false, Error = response.DebugMessage    });
                 }

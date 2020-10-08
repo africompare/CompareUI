@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AfriCompare.API.Controllers
 {
@@ -23,4 +24,5 @@ namespace AfriCompare.API.Controllers
         [Required]
         public string ConfirmationLink { get; set; }
     }
+  
 }
