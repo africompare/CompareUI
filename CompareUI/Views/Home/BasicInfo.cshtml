@@ -1,8 +1,8 @@
 ﻿@model AfriCompare.API.Controllers.UserRegistrationRequest
-
 @{
     ViewData["Title"] = "BasicInfo";
     Layout = "~/Views/Shared/AccLayout.cshtml";
+    string pattern = @"(?=.*[a-z])(?=.*[A-Z]).*";
 }
 <div class="container">
     <div class="baseImg" style="position: fixed;padding-left: 40px;">
@@ -11,48 +11,23 @@
     <div class="row justify-content-end">
         <div class="col-md-5">
 
-
-
-            @* Charles Parsley Validated Form *@
-            <form method="post" action="#" data-parsley-validate="" novalidate="">
-                <div class="card card-default">
-                    <div class="card-header">
-                        <div class="card-title">Form Register</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group"><label class="col-form-label">Email Address *</label><input class="form-control" type="text" name="email" required></div>
-                        <div class="form-group"><label class="col-form-label">Password *</label><input class="form-control" id="id-password" type="password" name="password" required></div>
-                        <div class="form-group"><label class="col-form-label">Confirm Password *</label><input class="form-control" type="password" name="confirmPassword" required data-parsley-equalto="#id-password"></div>
-                        <div class="required">* Required fields</div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <div class="checkbox c-checkbox"><label><input type="checkbox" name="agreements" required data-parsley-error-message="Please read and agree the terms"><span class="fa fa-check"></span> I agree with the<a class="ml-2" href="#">terms</a></label></div>
-                            </div>
-                            <div class="float-right"><button class="btn btn-primary" type="submit">Register</button></div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-
             <div class="card card-default mb-3 mt-3">
                 <div class="card-body">
                     <div class="card-header">Get Started</div>
-                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", data_parsley_validate = "" }))
+                    <div class="alert alert-danger" role="alert" id="dvError"></div>
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
                     {
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="p-2">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label asp-for="Salutation" class="control-label"></label>
-                                    <input asp-for="Salutation" type="text" name="Salutation" class="form-control formtext" placeholder="Salutation" />
+                                    <input asp-for="Salutation" type="text" name="Salutation" class="form-control formtext" placeholder="Salutation" required minlength="2" />
                                     <span asp-validation-for="Salutation" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-8">
                                     <label asp-for="FullName" class="control-label"></label>
-                                    <input asp-for="FullName" type="text" name="FullName" class="form-control formtext" placeholder="FullName " />
+                                    <input asp-for="FullName" type="text" name="FullName" class="form-control formtext" placeholder="FullName " required minlength="5" />
                                     <span asp-validation-for="FullName" class="text-danger"></span>
                                 </div>
                             </div>
@@ -60,37 +35,49 @@
 
                         <div class="p-2">
                             <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" type="email" name="Email" class="form-control formtext" placeholder="Email" />
+                            <input asp-for="Email" type="email" name="Email" class="form-control formtext" placeholder="Email" required minlength="6" data-parsley-checkemail />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
 
                         <div class="p-2">
                             <label asp-for="PhoneNumber" class="control-label"></label>
-                            <input asp-for="PhoneNumber" type="text" name="PhoneNumber" class="form-control formtext" placeholder="Phone Number" />
+                            <input asp-for="PhoneNumber" type="text" name="PhoneNumber" class="form-control formtext" placeholder="Phone Number" required />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
 
                         <div class="p-2">
                             <label asp-for="City" class="control-label"></label>
-                            <input asp-for="City" type="text" name="City" class="form-control formtext" placeholder="City" />
+                            <input asp-for="City" type="text" name="City" class="form-control formtext" placeholder="City" required />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
+
                         <div class="d-flex p-2 ">
                             <div class="p-2">
                                 <label asp-for="Password" class="control-label"></label>
-                                <input asp-for="Password" type="password" name="password" class="form-control formtext" placeholder="Password" />
+                                <input asp-for="Password" type="password" name="password" class="form-control formtext" 
+                                    data-parsley-required-message="Please enter your  password."
+                                    data-parsley-uppercase="1"
+                                    data-parsley-lowercase="1"
+                                    data-parsley-number="1"
+                                    data-parsley-special="1"
+                                    data-parsley-pattern="@pattern" 
+                                    required
+                                    minlength="6" 
+                                    data-parsley-trigger="change focusin" 
+                                    placeholder="Password" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="p-2">
                                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" />
+                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control formtext" placeholder="Confirm Password" required data-parsley-equalto="#Password" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
 
                         <!--div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div-->
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        </div-->
+
                         <div class="p-2">
                             <input type="submit" value="Next" class="btn btn-block btn-success" />
                             <!--a href="#" class=" btn btn-block btn-success">Next</a-->
@@ -100,22 +87,22 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
-@section Scripts { 
-<script>
+@section Scripts {
+    <script>
     $(document).ready(function () {
         //loadFees();
         $('#frmAdd').parsley().on('field:validated', function () {
-            alert("pre submit alert");
-            var ok = $('.parsley-error').length === 0;
-            if (!ok) {
+             var ok = $('.parsley-error').length === 0;
+           if (!ok) {
                 InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
                 return false;
             }
-        }).on('form:submit', function () {
-            ClearInlineError("dvError");
 
+        }).on('form:submit', function () {
+
+            ClearInlineError("dvError");
 
             var frm = $("#frmAdd");
 
@@ -124,27 +111,24 @@
                 return false;
             }
 
-            if (!frm.valid()) {
+            if (!frm.parsley().isValid()) {
                 InlineErrorMessage("Validation Error! Please check all fields", "dvError");
                 return false;
             }
 
-            //var actionUrl = frm.attr("action");
+            //alert(frm.parsley().isValid());
+           //var actionUrl = frm.attr("action");
             var params = frm.serializeArray();
 
-            $("#waitAdd").show();
+            //$("#waitAdd").show();
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("ProcessAddBasicInfo", "HomeController")',
+                url: '@Url.Action("ProcessAddBasicInfo", "Home")',
                 data: params,
-                success: function (data) {
-                    if (!data.IsAuthenticated) {
-                        window.location.href = "@Url.Action("Login", "Portal")";
-                        return;
-                    }
-                    if (!data.IsSuccessful) {
-                        InlineErrorMessage(data.Error ? data.Error : "Unknown error occured. Please try again later!", "dvError");
-                       swal({
+                success: function (data) { 
+                    if (!data.isSuccessful) {
+                        InlineErrorMessage(data.error, "dvError");
+                        swal({
                             title: "",
                             text: data.Error ? data.Error : "Unknown error occured. Please try again later!",
                             type: "error",
@@ -153,7 +137,6 @@
                             closeOnConfirm: true,
                         }, function (isConfirm) {
                             if (isConfirm) {
-
                             }
                         });
 
@@ -174,16 +157,15 @@
                     }
                 },
                 complete: function () {
-                    $("#waitAdd").hide();
+                    //$("#waitAdd").hide();
                 }
             });
             return false;
         });
     });
+    </script>
 
-        </script>
-
-        <script>
+    <script>
         @*function loadFees() {
         //$("#FeeId").prop("disabled", true);
         $.getJSON("@Url.Action("LoadFees", "OBusinessDataProvider")",
@@ -201,5 +183,5 @@
                 //$("#FeeId").prop("disabled", false);
             });
     }*@
-        </script>
-    }
+    </script>
+}

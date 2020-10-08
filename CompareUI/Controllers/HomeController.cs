@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
+using ApiHandshake;
+using AfriCompare.API.Controllers;
+using CompareHelper.Request;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace AfriCompareAdmin.Controllers
 {
@@ -77,10 +82,16 @@ namespace AfriCompareAdmin.Controllers
                 //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Error Occurred! Please try again later" });
                 //}
 
-                //if (!response.Status.IsSuccessful)
-                //{
-                //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = string.IsNullOrEmpty(response.Status.Message.TechnicalMessage) ? "Process Failed! Unable to add nomination Source" : response.Status.Message.TechnicalMessage });
-                //}
+                string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
+                 model.ConfirmationLink   = System.Net.WebUtility.UrlDecode(confirmLink);
+ 
+                 var response = WebAPI< AuthenticationResult ,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
+
+                
+                if (!response.IsSuccessful)
+                {
+                    return Json(new {   IsSuccessful = false, IsReload = false, Error = response.DebugMessage    });
+                }
 
                 //HttpContext.Session.SetString("_AssignmentList", null);
                 return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" });
@@ -88,7 +99,7 @@ namespace AfriCompareAdmin.Controllers
             catch (Exception ex)
             {
                 _logger.Log(LogLevel.Debug, $"{ex.StackTrace} ==> {ex.Source}  ==> {ex.Message}");
-                return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Process Error Occurred! Please try again later" });
+                return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "Process Error Occurred! Please try again later" });
             }
         }
 

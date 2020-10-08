@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AfriCompare.API.Controllers
 {
@@ -19,11 +20,9 @@ namespace AfriCompare.API.Controllers
         [Required]
         public string FullName { get; set; }
         [Required]
-        public string Gender { get; set; }
+        public string City { get; set; }
         [Required]
-        public string DateOfBirth { get; set; }
-        [Required]
-        public string City { get; set; } 
-        public  string ConfirmUrl { get; set; }
+        public string ConfirmationLink { get; set; }
     }
+  
 }
