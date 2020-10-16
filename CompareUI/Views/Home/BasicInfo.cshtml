@@ -117,7 +117,7 @@
             }
 
             //alert(frm.parsley().isValid());
-           //var actionUrl = frm.attr("action");
+            //var actionUrl = frm.attr("action");
             var params = frm.serializeArray();
 
             //$("#waitAdd").show();
@@ -148,7 +148,7 @@
                             type: "success",
                             showCancelButton: false,
                             confirmButtonText: "Ok",
-                            closeOnConfirm: false,
+                            closeOnConfirm: true,
                         }, function (isConfirm) {
                             if (isConfirm) {
                                window.location.reload();

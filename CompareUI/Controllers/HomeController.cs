@@ -93,7 +93,6 @@ namespace AfriCompareAdmin.Controllers
                     return Json(new {   IsSuccessful = false, IsReload = false, Error = response.DebugMessage    });
                 }
 
-                //HttpContext.Session.SetString("_AssignmentList", null);
                 return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" });
             }
             catch (Exception ex)
