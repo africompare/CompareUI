@@ -38,6 +38,11 @@ namespace AfriCompareAdmin.Controllers
         public IActionResult BasicInfo()
         {
             return View();
+        } 
+        
+        public IActionResult Login()
+        {
+            return View();
         }
         public JsonResult ProcessAddBasicInfo(AfriCompare.API.Controllers.UserRegistrationRequest model)
         {

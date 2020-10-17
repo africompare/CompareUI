@@ -19,37 +19,39 @@
 </head>
 <body>
     <div class="wrapper">
-        @RenderBody()
-        <footer class="footer-container"><span>&copy; 2020 - AfriCompare</span></footer>
-    </div> 
+        <div class="block-center mt-4 wd-xl">
+            @RenderBody()
+            <footer class="footer-container"><span>&copy; 2020 - AfriCompare</span></footer>
+        </div>
+    </div>
 
-    @*@Scripts.Render("~/bundles/Morderniser")*@
-    <script src="~/Content/vendor/modernizr/modernizr.custom.js"></script>
-    <script src="~/Content/vendor/js-storage/js.storage.js"></script>
-    <script src="~/Content/vendor/screenfull/dist/screenfull.js"></script>
+        @*@Scripts.Render("~/bundles/Morderniser")*@
+        <script src="~/Content/vendor/modernizr/modernizr.custom.js"></script>
+        <script src="~/Content/vendor/js-storage/js.storage.js"></script>
+        <script src="~/Content/vendor/screenfull/dist/screenfull.js"></script>
 
-    @*@Scripts.Render("~ /bundles/Bstrap")*@
-    <script src="~/Content/vendor/jquery/dist/jquery.js"></script> @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
-    <script src="~/Content/vendor/bootstrap/dist/js/bootstrap.js"></script>
-    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        @*@Scripts.Render("~ /bundles/Bstrap")*@
+        <script src="~/Content/vendor/jquery/dist/jquery.js"></script> @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
+        <script src="~/Content/vendor/bootstrap/dist/js/bootstrap.js"></script>
+        @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>*@
-    <script src="~/Content/vendor/popper.js/dist/umd/popper.js"></script>
+        <script src="~/Content/vendor/popper.js/dist/umd/popper.js"></script>
 
-    @*@Scripts.Render("~/bundles/mainJS")*@
-    @*<script src="~/Content/js/app.js"></script>*@
+        @*@Scripts.Render("~/bundles/mainJS")*@
+        @*<script src="~/Content/js/app.js"></script>*@
 
-    @*@Scripts.Render("~ /bundles/tinScroll")*@
-    <script src="~/Content/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="~/Content/vendor/jquery-sparkline/jquery.sparkline.js"></script>
-    <script src="~/Content/vendor/flot/jquery.flot.js"></script>
-    <script src="~/Content/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
-    <script src="~/Content/vendor/flot/jquery.flot.resize.js"></script>
-    <script src="~/Content/vendor/flot/jquery.flot.pie.js"></script>
-    <script src="~/Content/vendor/flot/jquery.flot.time.js"></script>
-    <script src="~/Content/vendor/flot/jquery.flot.categories.js"></script>
-    <script src="~/Content/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
-    <script src="~/Content/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
-    <script src="~/Content/vendor/moment/min/moment-with-locales.js"></script>
-    @RenderSection("scripts", required: true)
+        @*@Scripts.Render("~ /bundles/tinScroll")*@
+        <script src="~/Content/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <script src="~/Content/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+        <script src="~/Content/vendor/flot/jquery.flot.js"></script>
+        <script src="~/Content/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
+        <script src="~/Content/vendor/flot/jquery.flot.resize.js"></script>
+        <script src="~/Content/vendor/flot/jquery.flot.pie.js"></script>
+        <script src="~/Content/vendor/flot/jquery.flot.time.js"></script>
+        <script src="~/Content/vendor/flot/jquery.flot.categories.js"></script>
+        <script src="~/Content/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
+        <script src="~/Content/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+        <script src="~/Content/vendor/moment/min/moment-with-locales.js"></script>
+        
 </body>
 </html>
