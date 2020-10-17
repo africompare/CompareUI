@@ -11,6 +11,8 @@ using AfriCompare.API.Controllers;
 using CompareHelper.Request;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace AfriCompareAdmin.Controllers
 {
@@ -27,7 +29,7 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Quotes()
         {
             return View();
@@ -49,7 +51,10 @@ namespace AfriCompareAdmin.Controllers
 
                 if (string.IsNullOrEmpty(model.FullName) || model.FullName.Length < 2)
                 {
-                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid FullName" });
+                    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Invalid FullName" }, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = false,
+                    });
                 }
 
                 if (string.IsNullOrEmpty(model.City) || model.City.Length < 2)
@@ -83,19 +88,23 @@ namespace AfriCompareAdmin.Controllers
                 //}
 
                 string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
-                 model.ConfirmationLink   = System.Net.WebUtility.UrlDecode(confirmLink);
- 
-                 var response = WebAPI< AuthenticationResult ,UserRegistrationRequest >.Consume(SharedEndpoints.Register, model , model.Email);
+                model.ConfirmationLink = System.Net.WebUtility.UrlDecode(confirmLink);
 
-                
+                var response = WebAPI<AuthenticationResult, UserRegistrationRequest>.Consume(SharedEndpoints.Register, model, model.Email);
+
                 if (!response.IsSuccessful)
                 {
-                    return Json(new {   IsSuccessful = false, IsReload = false, Error = response.DebugMessage    });
+                    return Json(new { IsSuccessful = false, IsReload = false, Error = response.DebugMessage }, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = false,
+                    });
                 }
 
-                //HttpContext.Session.SetString("_AssignmentList", null);
-                return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" });
-            }
+                return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "" },new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = false,
+                });
+             }
             catch (Exception ex)
             {
                 _logger.Log(LogLevel.Debug, $"{ex.StackTrace} ==> {ex.Source}  ==> {ex.Message}");

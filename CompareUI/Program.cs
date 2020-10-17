@@ -15,13 +15,12 @@ namespace CompareUI
         {
             CreateHostBuilder(args).Build().Run();
         } 
-
         public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                    //webBuilder.UseStartup<Startup>();
-                    webBuilder.UseStartup<Startup>().UseUrls(new[] { "http://127.0.0.1:5001" }); // now the Kestrel server will listen on port 5001!
-                });
+                //webBuilder.UseStartup<Startup>();
+                webBuilder.UseStartup<Startup>().UseUrls(new[] { "http://127.0.0.1:5001" }); // now the Kestrel server will listen on port 5001!
+            });
     }
 }
