@@ -8,6 +8,7 @@ namespace CompareHelper.Request
         {
             public const string SignIn = "/CompareService/Login";
             public const string Register = "/compareservice/register";
+            public const string ConfirmEmail = "/CompareService/ConfirmEmail";
             public const string ResetPassword = "/CompareService/PasswordReset";
         }
         internal class VendorEndpoints

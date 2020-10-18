@@ -24,5 +24,4 @@ namespace AfriCompare.API.Controllers
         [Required]
         public string ConfirmationLink { get; set; }
     }
-  
 }

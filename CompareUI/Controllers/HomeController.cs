@@ -40,19 +40,34 @@ namespace AfriCompareAdmin.Controllers
             return View();
         } 
 
-        public IActionResult Confirmation()
-        {
-            return View();
-        } 
+   
         
         public IActionResult Login()
         {
             return View();
         }
        [HttpGet]
-        public IActionResult ConfirmEmail(string userId,string token)
+        public IActionResult ConfirmEmail(EmailConfirmationRequest model)
         {
-            string st = "";
+            if (string.IsNullOrEmpty(model.UserId) || model.UserId.Length < 2)
+            {
+                return View("ConfirmEmailFail",model);
+            }
+
+            if (string.IsNullOrEmpty(model.Token) || model.Token.Length < 2)
+            {
+                return View("ConfirmEmailFail", model);
+            }
+
+            //var bytes = Convert.FromBase64String(model.Token);
+            //model.Token = System.Text.Encoding.UTF8.GetString(model.Token);
+            //model.Token = model.Token
+            var response = WebAPI<AuthenticationResult, EmailConfirmationRequest>.Consume(SharedEndpoints.ConfirmEmail, model,"");
+            if (!response.IsSuccessful)
+            {
+                return View("ConfirmEmailFail", model); 
+            } 
+             
             return View();
         }
         public JsonResult ProcessAddBasicInfo(AfriCompare.API.Controllers.UserRegistrationRequest model)
