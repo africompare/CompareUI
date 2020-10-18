@@ -38,6 +38,16 @@ namespace AfriCompareAdmin.Controllers
         public IActionResult BasicInfo()
         {
             return View();
+        } 
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        } 
+        
+        public IActionResult Login()
+        {
+            return View();
         }
        [HttpGet]
         public IActionResult ConfirmEmail(string userId,string token)
