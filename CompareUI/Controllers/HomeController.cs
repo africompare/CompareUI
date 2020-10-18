@@ -39,6 +39,12 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
+       [HttpGet]
+        public IActionResult ConfirmEmail(string userId,string token)
+        {
+            string st = "";
+            return View();
+        }
         public JsonResult ProcessAddBasicInfo(AfriCompare.API.Controllers.UserRegistrationRequest model)
         {
             try
