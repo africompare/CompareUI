@@ -1,8 +1,9 @@
-﻿@model AfriCompare.API.Controllers.UserRegistrationRequest
+﻿@model AfriCompare.Data.APIObjs.UserRegistrationRequest
 @{
     ViewData["Title"] = "BasicInfo";
     Layout = "~/Views/Shared/AccLayout.cshtml";
     string pattern = @"(?=.*[a-z])(?=.*[A-Z]).*";
+    string role = ViewBag.role ?? "customer";
 }
 <div class="container">
     <div class="baseImg" style="position: fixed;padding-left: 40px;">
@@ -12,40 +13,38 @@
     <div class="row justify-content-between">
         <div class="col-md-5">
             @* <div class="row">
-            <div class="col-lg-9 col-xl-6">
-                <p>A title with a text under</p>
-            </div>
-            <div class="col-lg-3 col-xl-6">
-                <p><a class="btn btn-primary" id="swal-demo2" href="#">Try me!</a></p>
-            </div>
+                    <div class="col-lg-9 col-xl-6">
+                        <p>A title with a text under</p>
+                    </div>
+                    <div class="col-lg-3 col-xl-6">
+                        <p><a class="btn btn-primary" id="swal-demo2" href="#">Try me!</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-xl-6">
+                        <p>A success message!</p>
+                    </div>
+                    <div class="col-lg-3 col-xl-6">
+                        <p><a class="btn btn-primary" id="swal-demo3" href="#">Try me!</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-xl-6">
+                        <p>A warning message, with a function attached to the &quot;Confirm&quot;-button</p>
+                    </div>
+                    <div class="col-lg-3 col-xl-6">
+                        <p><a class="btn btn-primary" id="swal-demo4" href="#">Try me!</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-xl-6">
+                        <p>... and by passing a parameter, you can execute something else for &quot;Cancel&quot;.</p>
+                    </div>
+                    <div class="col-lg-3 col-xl-6">
+                        <p><a class="btn btn-primary" id="swal-demo5" href="#">Try me!</a></p>
+                    </div>
+                </div>*@
         </div>
-        <div class="row">
-            <div class="col-lg-9 col-xl-6">
-                <p>A success message!</p>
-            </div>
-            <div class="col-lg-3 col-xl-6">
-                <p><a class="btn btn-primary" id="swal-demo3" href="#">Try me!</a></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9 col-xl-6">
-                <p>A warning message, with a function attached to the &quot;Confirm&quot;-button</p>
-            </div>
-            <div class="col-lg-3 col-xl-6">
-                <p><a class="btn btn-primary" id="swal-demo4" href="#">Try me!</a></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9 col-xl-6">
-                <p>... and by passing a parameter, you can execute something else for &quot;Cancel&quot;.</p>
-            </div>
-            <div class="col-lg-3 col-xl-6">
-                <p><a class="btn btn-primary" id="swal-demo5" href="#">Try me!</a></p>
-            </div>
-        </div>*@
-        </div> 
-
-
         <div class="col-md-5">
 
             <div class="card card-default mb-3 mt-3" style="overflow-y:scroll;max-height:450px;">
@@ -54,6 +53,8 @@
                     <div class="alert alert-danger" role="alert" id="dvError"></div>
                     @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
                     {
+                        <input asp-for="Role" type="hidden" name="Role" class="form-control formtext" value="@role"  required minlength="2" />
+
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="p-2">
                             <div class="row">
@@ -112,8 +113,8 @@
                         </div>
 
                         <!--div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                    </div-->
+        <input type="submit" value="Create" class="btn btn-primary" />
+        </div-->
 
                         <div class="p-2">
                             <input type="submit" value="Next" class="btn btn-block btn-success" />
@@ -154,7 +155,7 @@
             }
 
             var params = frm.serializeArray();
-           //alert(frm.parsley().isValid());
+            //alert(frm.parsley().isValid());
             //var actionUrl = frm.attr("action");
 
             //$("#waitAdd").show();
@@ -164,16 +165,14 @@
                 data: params,
                 success: function (data) {
                     //alert(JSON.stringify(data));
-                     //swal({
+                    //swal({
                     //    title: "Are you sure?", text: "Your will not be able to recover this imaginary file!",
                     //    icon: "warning",
                     //    buttons: {
                     //        cancel: { text: "No, cancel plx!", value: null, visible: !0, className: "", closeModal: !1 },
                     //        confirm: { text: "Yes, delete it!", value: !0, visible: !0, className: "bg-danger", closeModal: !1 }
                     //    }
-                    //});
-
-
+                    //});  
                     if (!data.IsSuccessful) {
                         InlineErrorMessage(data.Error, "dvError");
                         //swal({
@@ -186,8 +185,7 @@
                         //}, function (isConfirm) {
                         //    if (isConfirm) {
                         //    }
-                        //});
-
+                        //}); 
                         swal({
                             title: "Error Occured",
                             text: data.Error ? data.Error : "Unknown error occured. Please try again later!",

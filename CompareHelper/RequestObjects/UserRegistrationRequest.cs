@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AfriCompare.API.Controllers
+namespace AfriCompare.Data.APIObjs
 {
     public class UserRegistrationRequest
     {
@@ -23,5 +23,9 @@ namespace AfriCompare.API.Controllers
         public string City { get; set; }
         [Required]
         public string ConfirmationLink { get; set; }
+        [Required]
+        public string Role { get; set; }
     }
+   
+
 }

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
 using Microsoft.AspNetCore.Authorization;
-
-namespace AfriCompareAdmin.Controllers
+ 
+namespace AfriCompare.Controllers
 {
     public class IdentityController : Controller
     {
@@ -36,10 +36,10 @@ namespace AfriCompareAdmin.Controllers
         {
             return View();
         }
-        public JsonResult ProcessRegistration(AfriCompare.API.Controllers.UserRegistrationRequest model)
-        {
-            return   Json(new {  IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Email is required" });
-        }
+        //public JsonResult ProcessRegistration(AfriCompare.API.Controllers.UserRegistrationRequest model)
+        //{
+        //    return   Json(new {  IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Email is required" });
+        //}
 
         [AllowAnonymous]
         public ActionResult ActivationConfirmation()

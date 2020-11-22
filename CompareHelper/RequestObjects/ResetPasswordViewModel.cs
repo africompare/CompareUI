@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace AfriCompare.Data.APIObjects
+namespace AfriCompare.Data.APIObjs
 {
   public class ResetPasswordViewModel
     {

@@ -1,4 +1,4 @@
-﻿@model AfriCompare.API.Controllers.UserRegistrationRequest
+﻿@model AfriCompare.Data.APIObjs.UserRegistrationRequest
 @{
     ViewData["Title"] = "SignUp";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
@@ -45,7 +45,7 @@
 @section Scripts {
     @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
     @{Html.RenderPartial("ValidationScriptsPartial");}
-} 
+}
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -123,5 +123,5 @@
             return false; // Don't submit form for this demo
           });
         });
-    
+
 </script>

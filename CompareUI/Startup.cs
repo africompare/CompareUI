@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CompareUI
 {
@@ -19,12 +21,26 @@ namespace CompareUI
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Home/Login";  
+             });
+
+            services.AddAuthorization();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                //options.IdleTimeout = TimeSpan.FromSeconds(10); I want to keep the default 20 minutes
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
             services.AddControllersWithViews();
             services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -33,8 +49,7 @@ namespace CompareUI
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                options.ForwardedHeaders =ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
         }
 
@@ -47,10 +62,11 @@ namespace CompareUI
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -59,7 +75,10 @@ namespace CompareUI
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
 
             //app.UseEndpoints(endpoints =>
             //{

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 //using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace AfriCompare.API.Controllers
+namespace AfriCompare.Data.APIObjs
 {
     public class AuthFailedResponse //: ModelStateDictionary
     {

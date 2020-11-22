@@ -12,14 +12,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiHandshake\ApiHandshake.csproj" />
     <ProjectReference Include="..\CompareHelper\CompareHelper.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dependencies\" />
     <Folder Include="wwwroot\lib\parsley\" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AfriCompare.API.Controllers
+namespace AfriCompare.Data.APIObjs
 {
     public class UserLoginRequest
     {
@@ -9,5 +9,8 @@ namespace AfriCompare.API.Controllers
         public string Email { get;  set; }
         [Required]
         public string Password { get;  set; }
+        public bool RememberMe { get; set; }
     }
+
+
 }

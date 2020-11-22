@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Compare.Data.APIObjects
+namespace Compare.Data.APIObjs
 {
     public class ProductCategoryObj
     {

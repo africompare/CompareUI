@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace AfriCompareAdmin.Vendor.Controllers
+namespace AfriCompare.Vendor.Controllers
 {
     [Area("Vendor")]
+    [Authorize(Roles = "vendor")]
 
     public class HomeController : Controller
     {

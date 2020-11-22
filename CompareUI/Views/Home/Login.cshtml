@@ -2,34 +2,103 @@
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
-}
-
+} 
 
 <div class="block-center mt-4 wd-xl">
     <div class="card card-flat">
         <div class="card-header text-center" style="background-color: #727272;"><a href="#"><img class="block-center rounded" src="~/Content/img/logo_s.png" alt="Login" width="150"></a></div>
         <div class="card-body">
+            <div class="alert alert-danger" role="alert" id="dvError"></div>
             <p class="text-center py-2">SIGN IN TO CONTINUE.</p>
-            <form class="mb-3" id="loginForm" novalidate>
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
+            {
                 <div class="form-group">
                     <div class="input-group with-focus">
-                        <input class="form-control border-right-0" id="exampleInputEmail1" type="email" placeholder="Enter email" autocomplete="off" required>
+                        <input class="form-control border-right-0" id="Email" name="Email" type="email" placeholder="Enter email" autocomplete="off" required>
                         <div class="input-group-append"><span class="input-group-text text-muted bg-transparent border-left-0"><em class="fa fa-envelope"></em></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group with-focus">
-                        <input class="form-control border-right-0" id="exampleInputPassword1" type="password" placeholder="Password" required>
+                        <input class="form-control border-right-0" name="password" id="password" type="password" placeholder="Password" required>
                         <div class="input-group-append"><span class="input-group-text text-muted bg-transparent border-left-0"><em class="fa fa-lock"></em></span></div>
                     </div>
                 </div>
                 <div class="clearfix">
-                    <div class="checkbox c-checkbox float-left mt-0"><label><input type="checkbox" value="" name="remember"><span class="fa fa-check"></span> Remember Me</label></div>
+                    <div class="checkbox c-checkbox float-left mt-0">
+                        <label>
+                            <input type="checkbox" value="" name="remember"><span class="fa fa-check"></span> Remember Me
+                        </label>
+                    </div>
                     <div class="float-right"><a class="text-muted" href="recover.html">Forgot your password?</a></div>
                 </div><button class="btn btn-block btn-primary mt-3" type="submit">Login</button>
-            </form>
-            <p class="pt-3 text-center">Need to Signup?</p><a class="btn btn-block btn-secondary" href="register.html">Register Now</a>
+            }
+            <p class="pt-3 text-center">Need to Signup?</p><a class="btn btn-block btn-secondary" href="BasicInfo">Register Now</a>
         </div>
     </div>
 </div>
 
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        //loadFees();
+        $('#frmAdd').parsley().on('field:validated', function () {
+            var ok = $('.parsley-error').length === 0;
+
+           if (!ok) {
+                InlineErrorMessage("Validation Error! Please check values inputted", "dvError");
+                return false;
+            }
+
+        }).on('form:submit', function () {
+
+            ClearInlineError("dvError");
+
+            var frm = $("#frmAdd");
+
+            if (frm == null) {
+                InlineErrorMessage("Invalid Tab Information", "dvError");
+                return false;
+            }
+
+            if (!frm.parsley().isValid()) {
+                InlineErrorMessage("Validation Error! Please check all fields", "dvError");
+                return false;
+            }
+
+            var params = frm.serializeArray();
+            //alert(frm.parsley().isValid());
+            //var actionUrl = frm.attr("action");
+
+            //$("#waitAdd").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ProcessLogin", "Home")',
+                data: params,
+                success: function (data) {
+                    if (!data.IsSuccessful) {
+                        InlineErrorMessage(data.Error, "dvError");
+                    } else
+                    {
+                        var url = '';
+                        if (data.Role == "customer") {
+                            url = '@Url.Action("Index", "Home")';
+                        }
+                        if (data.Role == "vendor") {
+                            url = '@Url.Action("Index", "Home",new { Area = "vendor" })';
+                        }
+                        if (data.Role == "admin") {
+                            url= '@Url.Action("Index", "Home", new { Area = "admin" })';
+                        }
+                        window.location.href = url; 
+                    }
+                },
+                complete: function () {
+                    //$("#waitAdd").hide();
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+}

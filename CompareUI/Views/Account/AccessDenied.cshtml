@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+} 
+<div class="block-center mt-4 wd-xl">
+    <div class="card card-flat">
+        <div class="card-header text-center" style="background-color: #727272;"><a href="#"><img class="block-center rounded" src="~/Content/img/logo_s.png" alt="Login" width="150"></a></div>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert" id="dvError">You do not have permission to access this area of the application.<br />Please chose the appropraite role    </div>
+            <select id="roleselect" class="custom-select custom-select-sm" style="height: 43px;">
+                <option selected =""><-- Select --></option>
+                <option value="customer">Customer</option>
+                <option value="vendor">Vendor</option>
+                <option value="admin">Admin</option>
+            </select> 
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#roleselect").on('change', function () {
+                var conceptName = $('#roleselect').find(":selected").val();
+                var url = '';
+                if (conceptName == "customer") {
+                    url = '@Url.Action("Index", "Home")';
+                }
+                if (conceptName == "vendor") {
+                    url = '@Url.Action("Index", "Home",new { Area = "vendor" })';
+                }
+                if (conceptName == "admin") {
+                    url = '@Url.Action("Index", "Home", new { Area = "admin" })';
+                }
+                window.location.href = url;
+            });
+        });
+    </script>
+}

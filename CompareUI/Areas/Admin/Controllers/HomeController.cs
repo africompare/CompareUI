@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using CompareUI.Models;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using CompareUI.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace AfriCompareAdmin.Admin.Controllers
+namespace AfriCompare.Admin.Controllers
 {
+    [Authorize(Roles="admin")]
     [Area("Admin")]
     public class HomeController : Controller
     {

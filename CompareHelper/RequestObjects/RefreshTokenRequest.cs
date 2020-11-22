@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AfriCompare.API.Controllers
+namespace AfriCompare.Data.APIObjs
 {
     public class RefreshTokenRequest
     {
