@@ -94,9 +94,9 @@ namespace AfriCompare.Controllers
                 SecurityStore.SecurityCore = new PortalSecurityCore(model, _httpContextAccessor);
                 var response = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<ApiHandshake.ItemResponseObj<UserProfileResult>>("loginresponse");
 
-                if (!response.IsSuccessful)
+                if (null==response ||!response.IsSuccessful)
                 {
-                    return Json(new { IsSuccessful = false, IsReload = false, Error = response.DebugMessage }, new JsonSerializerOptions
+                    return Json(new { IsSuccessful = false, IsReload = false, Error = response==null?"unknown error occured":response.DebugMessage }, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = false,
                     });

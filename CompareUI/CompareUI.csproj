@@ -27,10 +27,4 @@
     <Folder Include="wwwroot\lib\parsley\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="ApiHandshake">
-      <HintPath>Dependencies\ApiHandshake.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
