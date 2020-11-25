@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\Data\**" />
+    <Compile Remove="Dependencies\netcoreapp3.1\**" />
     <Content Remove="Controllers\Data\**" />
+    <Content Remove="Dependencies\netcoreapp3.1\**" />
     <EmbeddedResource Remove="Controllers\Data\**" />
+    <EmbeddedResource Remove="Dependencies\netcoreapp3.1\**" />
     <None Remove="Controllers\Data\**" />
+    <None Remove="Dependencies\netcoreapp3.1\**" />
   </ItemGroup>
 
   <ItemGroup>
