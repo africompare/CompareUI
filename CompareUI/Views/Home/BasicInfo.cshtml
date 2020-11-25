@@ -50,7 +50,7 @@
             <div class="card card-default mb-3 mt-3" style="overflow-y:scroll;max-height:450px;">
                 <div class="card-body">
                     <div class="card-header">Get Started</div>
-                    <div class="alert alert-danger" role="alert" id="dvError"></div>
+                    <div class="alert alert-danger" role="alert" id="dvError" style="display:none"></div>
                     @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
                     {
                         <input asp-for="Role" type="hidden" name="Role" class="form-control formtext" value="@role"  required minlength="2" />
@@ -186,6 +186,7 @@
                         //    if (isConfirm) {
                         //    }
                         //}); 
+                        $("#dvError").show();
                         swal({
                             title: "Error Occured",
                             text: data.Error ? data.Error : "Unknown error occured. Please try again later!",

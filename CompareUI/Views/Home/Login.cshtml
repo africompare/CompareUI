@@ -8,7 +8,7 @@
     <div class="card card-flat">
         <div class="card-header text-center" style="background-color: #727272;"><a href="#"><img class="block-center rounded" src="~/Content/img/logo_s.png" alt="Login" width="150"></a></div>
         <div class="card-body">
-            <div class="alert alert-danger" role="alert" id="dvError"></div>
+            <div class="alert alert-danger" role="alert" id="dvError" style="display:none"></div>
             <p class="text-center py-2">SIGN IN TO CONTINUE.</p>
             @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAdd", data_parsley_validate = "" }))
             {
@@ -78,6 +78,8 @@
                 success: function (data) {
                     if (!data.IsSuccessful) {
                         InlineErrorMessage(data.Error, "dvError");
+                        $("#dvError").show();
+
                     } else
                     {
                         var url = '';
