@@ -34,12 +34,12 @@ namespace AfriCompare.Controllers
 
          public IActionResult Index()
         {
-            //var userData = MvcApplication.GetUserData(User.Identity.Name) ?? new UserData(); 
-            //if (userData.UserId < 1) { return Json(new { IsSuccessful = false, Error = "Your session has expired", IsAuthenticated = false }); }
-            //if (model == null)
-            //{
-            //    return Json(new { IsSuccessful = false, Error = "Your session has expired", IsAuthenticated = false });
-            //} 
+            var userData = SecurityStore.GetUserData(_httpContextAccessor);
+            if (null == userData)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
             return View();
         }
  
@@ -54,7 +54,7 @@ namespace AfriCompare.Controllers
             {
                 SecurityStore.SecurityCore = new PortalSecurityCore(null, _httpContextAccessor);
             }
-            
+
             SecurityStore.SecurityCore.SignOut(HttpContext);
 
             return  RedirectToAction("Index");
@@ -96,12 +96,13 @@ namespace AfriCompare.Controllers
 
                 if (null==response ||!response.IsSuccessful)
                 {
-                    return Json(new { IsSuccessful = false, IsReload = false, Error = response==null?"unknown error occured":response.DebugMessage }, new JsonSerializerOptions
+                    return Json(new { IsSuccessful = false, IsReload = false, Error = response==null?"Unknown error occured":response.DebugMessage }, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = false,
                     });
                 }
 
+                //if it suceeded
                 SecurityStore.SecurityCore.SignIn(HttpContext);
 
                 return Json(new { IsAuthenticated = true, IsSuccessful = true, IsReload = false, Error = "", Role = response.Items[0].Role }, new JsonSerializerOptions
@@ -187,13 +188,14 @@ namespace AfriCompare.Controllers
                 //{
                 //    return Json(new { IsAuthenticated = true, IsSuccessful = false, IsReload = false, Error = "Error Occurred! Please try again later" });
                 //} 
-                string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
-                model.ConfirmationLink = HttpUtility.UrlDecode(confirmLink);
 
                 //Extract role from query string
                 //var paramList = CompareApp.GetRequestInfo(_httpContextAccessor);
                 //var role =paramList.Where(kvp => kvp.Value == "section").FirstOrDefault().Value ;
-                // model.Role = role;
+                // model.Role = role;               
+                
+                string confirmLink = Url.Action("ConfirmEmail", "Home", new { userId = "{userId}", token = "{token}" }, Request.Scheme);
+                model.ConfirmationLink = HttpUtility.UrlDecode(confirmLink); 
 
                 var response = WebAPI<AuthenticationResult, UserRegistrationRequest>.Consume(SharedEndpoints.Register, model, model.Email);
 

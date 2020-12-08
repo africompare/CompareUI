@@ -5,9 +5,8 @@ namespace AfriCompare.Data.APIObjs
     public class RefreshTokenRequest
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; internal set; }
+        public string Token { get; set; }
         [Required]
-        public string Password { get; internal set; }
+        public string RefreshToken { get; set; }
     }
 }

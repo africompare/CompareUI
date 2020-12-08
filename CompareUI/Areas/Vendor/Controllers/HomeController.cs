@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CompareUI.Models;
 using Microsoft.AspNetCore.Authorization;
+using ApiHandshake;
+using System.Text.Json;
+using AfriCompare.Data.APIObjs;
+using Microsoft.AspNetCore.Http;
 
 namespace AfriCompare.Vendor.Controllers
 {
@@ -16,14 +20,25 @@ namespace AfriCompare.Vendor.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)//, SignInManager<ApplicationUser> signInManager)
         {
+            _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            var userData = SecurityStore.GetUserData(_httpContextAccessor);
+
+            if (null == userData)
+            {
+                return Redirect("~/Home/Login");
+            } 
+            //var model = new RefreshTokenRequest {   RefreshToken = "sdsds", Token = "dfsds" };
+            //var response = WebAPI<string, RefreshTokenRequest>.Consume(CompareHelper.Request.SharedEndpoints.Test1, model, userData.Email);
+            //var response2 = WebAPI<string, RefreshTokenRequest>.Consume(CompareHelper.Request.SharedEndpoints.Test2, model, userData.Email);
             return View();
         }
 

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using ApiHandshake;
 
 namespace AfriCompare.Admin.Controllers
 {
@@ -15,14 +17,23 @@ namespace AfriCompare.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)
         {
+            _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
+            var userData = SecurityStore.GetUserData(_httpContextAccessor);
+            if (null == userData || string.IsNullOrEmpty(userData.Role))
+            {
+                return Redirect("~/Home/Login");
+            }
+
             return View();
         }
 
