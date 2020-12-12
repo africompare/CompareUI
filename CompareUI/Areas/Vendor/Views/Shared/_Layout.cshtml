@@ -18,8 +18,8 @@
 
     @*StyleBundle("~/Content/css")*@
     <link rel="stylesheet" href="~/Content/vendor/weather-icons/css/weather-icons.css">
-    <link rel="stylesheet" href="~/Content/css/bootstrap.css" >
-    <link rel="stylesheet" href="~/Content/css/app.css"  >
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/app.css">
 
     @*<link rel="stylesheet" href="~/Content/site.css" >*@
 </head>
@@ -32,17 +32,11 @@
         @await Html.PartialAsync("_SideNav")
 
         @RenderBody()
-
-        <footer class="footer-container"><span>&copy; 2020 - AfriCompare</span></footer>
-
-    </div>
-
-
-
-
-
-
-
+       
+        <footer class="footer-container">
+            <span>&copy; @DateTime.Now.Year - AfriCompare</span>
+        </footer>
+    </div> 
 
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
