@@ -59,6 +59,10 @@ namespace AfriCompare.Controllers
 
             return  RedirectToAction("Index");
         }
+        public IActionResult VendorInner()
+        {
+            return View();
+        }
 
         [AllowAnonymous]
         public IActionResult BasicInfo()
