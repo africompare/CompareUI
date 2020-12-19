@@ -53,12 +53,27 @@ namespace AfriCompare.Vendor.Controllers
             return View();
         }
 
+        public ActionResult ProductList()
+        {
+            ViewBag.Message = "Product List.";
+
+            return View();
+        }
+
+        public ActionResult MySubscribers()
+        {
+            ViewBag.Message = "Product List.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
