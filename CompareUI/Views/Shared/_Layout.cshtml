@@ -7,10 +7,10 @@
     <title>@ViewBag.Title - Africompare Application</title>
 
     @*StyleBundle("~/Content/fontAwesome")*@
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/brands.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/regular.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/solid.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/brands.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/regular.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/solid.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/fontawesome.css">
 
     @*StyleBundle("~/Content/css").*@
     <link rel="stylesheet" href="~/Content/vendor/simple-line-icons/css/simple-line-icons.css">
@@ -103,5 +103,20 @@
     <script src="~/Content/vendor/moment/min/moment-with-locales.js"></script>
     <script src="~/Content/js/app.js"></script>
     @RenderSection("scripts", required: false)
+
+
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save changes</button></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
