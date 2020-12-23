@@ -8,20 +8,20 @@
             <div class="modal-body">
                 <form>
                     <div class="row">
-                        <div class="form-group col-md-6"><label>Product Name</label><input class="form-control" type="text" placeholder="Enter email"></div>
+                        <div class="form-group col-md-6"><label>Product Name</label><input class="form-control" type="text" placeholder="Product Name"></div>
                         <div class="col-md-6">
                             <label>Select Category</label>
                             <select class="custom-select custom-select-sm">
-                                <option selected="">Open this select menu</option>
+                                <option selected="">Select Gender</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <div class="row">
+                            <label>Gender Discount</label>
+                            <div class="row ml-2 mr-2" style="border:1px solid #dbdbdb;padding-top:15px;">
                                 <div class="col-md-3">
-                                    <label>Select Category</label>
                                     <select class="custom-select custom-select-sm">
                                         <option selected="">Open this select menu</option>
                                         <option value="1">One</option>
@@ -29,11 +29,79 @@
                                         <option value="3">Three</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-2"><label>Product Name</label><input class="form-control" type="text" placeholder="Enter email"></div>
+                                <div class="form-group col-md-2"><input class="form-control" type="text" placeholder="10%"></div>
+                                <div class="form-group col-md-2"><input class="form-control" type="number" placeholder="Min"></div>
+                                <div class="form-group col-md-2"><input class="form-control" type="number" placeholder="Max"></div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6"><label>Email address</label><input class="form-control" type="email" placeholder="Enter email"></div>
-                        <div class="form-group col-md-6"><label>Password</label><input class="form-control" type="password" placeholder="Password"></div>
+                        <div class="col-md-12 pt-3">
+                            <div class="row">
+                                <div class="form-group col-md-4"><label>Value</label><input class="form-control" type="text" placeholder="%"></div>
+                                <div class="form-group col-md-4">
+                                    <label>Vehicle Usage</label>
+                                    <select class="custom-select custom-select-sm">
+                                        <option selected="">Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4 pt-1"><label>Vehicle Milage</label><input class="form-control" type="number" placeholder="0"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label>Anti-Theft</label>
+                            <div class="row ml-2 mr-2" style="border:1px solid #dbdbdb;padding-top:15px;">
+                                <div class="form-group col-md-4">
+                                    <select class="custom-select custom-select-sm">
+                                        <option selected="">Select Option</option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4"><input class="form-control" type="text" placeholder="%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label>Bank</label>
+                            <div class="row ml-2 mr-2" style="border:1px solid #dbdbdb;padding-top:15px;">
+                                <div class="form-group col-md-4">
+                                    <select class="custom-select custom-select-sm">
+                                        <option selected="">Select Bank</option>
+                                        <option value="1">UBA</option>
+                                        <option value="2">FCMB</option>
+                                        <option value="2">GT Bank</option>
+                                        <option value="2">Zenith Bank</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4"><input class="form-control" type="text" placeholder="%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label>Vehicle Type</label>
+                            <div class="row ml-2 mr-2" style="border:1px solid #dbdbdb;padding-top:15px;">
+                                <div class="form-group col-md-4">
+                                    <select class="custom-select custom-select-sm">
+                                        <option selected="">Vehicle Type</option>
+                                        <option value="1">UBA</option>
+                                        <option value="2">FCMB</option>
+                                        <option value="2">GT Bank</option>
+                                        <option value="2">Zenith Bank</option>
+                                    </select>
+                                </div>
+                                <fieldset>
+                                    <div class="form-group row">
+                                        <div class="col-md-10"><input class="form-control filestyle" type="file" data-classbutton="btn btn-secondary" data-classinput="form-control inline" data-icon="&lt;span class='fa fa-upload mr-2'&gt;&lt;/span&gt;"></div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label>Vehicle Type</label>
+                            <div class="row text-right" style="border:1px solid #dbdbdb;padding-top:15px;">
+                                <a href="#" class="btn btn-success">Add Field</a>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
