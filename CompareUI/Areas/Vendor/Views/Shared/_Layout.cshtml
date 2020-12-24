@@ -6,14 +6,19 @@
     <title>@ViewBag.Title - Africompare Application</title>
 
     @*StyleBundle("~/Content/fontAwesome")*@
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/brands.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/regular.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/solid.css">
-    <link rel="stylesheet" href="~/Content/vendor/%40fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/brands.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/regular.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/solid.css">
+    <link rel="stylesheet" href="~/Content/vendor/fortawesome/fontawesome-free/css/fontawesome.css">
     @*StyleBundle("~/Content/css").*@
     <link rel="stylesheet" href="~/Content/vendor/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/Content/vendor/animate.css/animate.css">
     <link rel="stylesheet" href="~/Content/vendor/whirl/dist/whirl.css">
+
+
+    <link rel="stylesheet" href="~/Content/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/Content/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/Content/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
 
     @*StyleBundle("~/Content/css")*@
     <link rel="stylesheet" href="~/Content/vendor/weather-icons/css/weather-icons.css">
@@ -67,10 +72,10 @@
     @*@Scripts.Render("~/bundles/Morderniser")*@
     <script src="~/Content/vendor/modernizr/modernizr.custom.js"></script>
     <script src="~/Content/vendor/js-storage/js.storage.js"></script>
-    <script src="~/Content/vendor/screenfull/dist/screenfull.js"></script> 
+    <script src="~/Content/vendor/screenfull/dist/screenfull.js"></script>
 
     <script src="~/Content/vendor/i18next/i18next.js"></script>
-    <script src="~/Content/vendor/i18next-xhr-backend/i18nextXHRBackend.js"></script> 
+    <script src="~/Content/vendor/i18next-xhr-backend/i18nextXHRBackend.js"></script>
 
     @*@Scripts.Render("~ /bundles/Bstrap")*@
     <script src="~/Content/vendor/jquery/dist/jquery.js"></script>
@@ -95,6 +100,22 @@
     <script src="~/Content/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
     <script src="~/Content/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
     <script src="~/Content/vendor/moment/min/moment-with-locales.js"></script>
+
+
+    <script src="~/Content/vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="~/Content/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons/js/buttons.colVis.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons/js/buttons.flash.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons/js/buttons.html5.js"></script>
+    <script src="~/Content/vendor/datatables.net-buttons/js/buttons.print.js"></script>
+    <script src="~/Content/vendor/datatables.net-keytable/js/dataTables.keyTable.js"></script>
+    <script src="~/Content/vendor/datatables.net-responsive/js/dataTables.responsive.js"></script>
+    <script src="~/Content/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Content/vendor/jszip/dist/jszip.js"></script>
+    <script src="~/Content/vendor/pdfmake/build/pdfmake.js"></script>
+    <script src="~/Content/vendor/pdfmake/build/vfs_fonts.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
