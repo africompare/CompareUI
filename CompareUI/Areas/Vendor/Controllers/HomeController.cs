@@ -67,6 +67,13 @@ namespace AfriCompare.Vendor.Controllers
             return View();
         }
 
+        public ActionResult Industry()
+        {
+            ViewBag.Message = "Product List.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
