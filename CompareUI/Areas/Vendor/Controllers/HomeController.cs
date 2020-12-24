@@ -26,8 +26,7 @@ namespace AfriCompare.Vendor.Controllers
         {
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
-        }
-
+        } 
         public IActionResult Index()
         {
             var userData = SecurityStore.GetUserData(_httpContextAccessor);
