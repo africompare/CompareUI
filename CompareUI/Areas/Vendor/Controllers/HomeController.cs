@@ -61,7 +61,21 @@ namespace AfriCompare.Vendor.Controllers
 
         public ActionResult MySubscribers()
         {
-            ViewBag.Message = "Product List.";
+            ViewBag.Message = "My Subscribers";
+
+            return View();
+        }
+
+        public ActionResult Industry()
+        {
+            ViewBag.Message = "Industry";
+
+            return View();
+        }
+
+        public ActionResult Profile()
+        {
+            ViewBag.Message = "Profile";
 
             return View();
         }
