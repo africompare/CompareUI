@@ -2,30 +2,66 @@
     ViewBag.Title = "Admin Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> 
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<section class="section-container">
+    <!-- Page content-->
+    <div class="content-wrapper">
+        <div class="content-heading">
+            <div>Welcome back Admin! <small data-localize="dashboard.WELCOME"></small></div><!-- START Language list-->
+            <div class="ml-auto">
+                <div class="btn-group">
+                    @*<button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>*@
+                    <div class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort" role="menu"><a class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#" data-set-lang="es">Spanish</a></div>
+                </div>
+            </div><!-- END Language list-->
+        </div><!-- START cards box-->
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left"><em class="icon-user fa-3x"></em></div>
+                    <div class="col-8 py-3 bg-primary rounded-right">
+                        <div class="h2 mt-0">1700</div>
+                        <div class="text-uppercase">Subscribers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left"><em class="icon-globe fa-3x"></em></div>
+                    <div class="col-8 py-3 bg-purple rounded-right">
+                        <div class="h2 mt-0">15</div>
+                        <div class="text-uppercase">Products</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left"><em class="icon-bubbles fa-3x"></em></div>
+                    <div class="col-8 py-3 bg-green rounded-right">
+                        <div class="h2 mt-0">500</div>
+                        <div class="text-uppercase">Reviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <!-- START date widget-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-green justify-content-center rounded-left">
+                        <div class="text-center">
+                            <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+                            <div class="text-sm" data-now="" data-format="MMMM"></div><br>
+                            <div class="h2 mt-0" data-now="" data-format="D"></div>
+                        </div>
+                    </div>
+                    <div class="col-8 py-3 rounded-right">
+                        <div class="text-uppercase" data-now="" data-format="dddd"></div><br>
+                        <div class="h2 mt-0" data-now="" data-format="h:mm"></div>
+                        <div class="text-muted text-sm" data-now="" data-format="a"></div>
+                    </div>
+                </div><!-- END date widget-->
+            </div>
+        </div><!-- END cards box-->
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>

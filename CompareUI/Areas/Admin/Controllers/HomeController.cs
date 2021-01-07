@@ -48,6 +48,25 @@ namespace AfriCompare.Admin.Controllers
             return View();
         }
 
+        public ActionResult ProductApproval()
+        {
+            ViewBag.Message = "Product Approval";
+
+            return View();
+        }
+        public ActionResult SubcriberAdmin()
+        {
+            ViewBag.Message = "Subscriber";
+
+            return View();
+        }
+        public ActionResult Vendor()
+        {
+            ViewBag.Message = "Vendor";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
