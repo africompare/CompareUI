@@ -17,12 +17,12 @@ namespace AfriCompare.Vendor.Controllers
     [Area("Vendor")]
     [Authorize(Roles = "vendor")]
 
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)//, SignInManager<ApplicationUser> signInManager)
+        public ProductController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)//, SignInManager<ApplicationUser> signInManager)
         {
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
@@ -35,9 +35,6 @@ namespace AfriCompare.Vendor.Controllers
             {
                 return Redirect("~/Home/Login");
             } 
-            //var model = new RefreshTokenRequest {   RefreshToken = "sdsds", Token = "dfsds" };
-            //var response = WebAPI<string, RefreshTokenRequest>.Consume(CompareHelper.Request.SharedEndpoints.Test1, model, userData.Email);
-            //var response2 = WebAPI<string, RefreshTokenRequest>.Consume(CompareHelper.Request.SharedEndpoints.Test2, model, userData.Email);
             return View();
         }
 
@@ -50,28 +47,24 @@ namespace AfriCompare.Vendor.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
-        } 
+        }
 
-        public ActionResult MySubscribers()
+        public ActionResult ProductList()
         {
-            ViewBag.Message = "My Subscribers";
+            ViewBag.Message = "Product List.";
 
             return View();
         }
+
+ 
 
         public ActionResult Industry()
         {
             ViewBag.Message = "Industry";
 
             return View();
-        }
-
-        public ActionResult Profile()
-        {
-            ViewBag.Message = "Profile";
-
-            return View();
-        }
+        }                                                                       
+     
 
         public ActionResult Contact()
         {
